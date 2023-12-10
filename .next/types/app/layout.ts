@@ -1,4 +1,4 @@
-// File: /Users/mohsen/personap-projects/m2commerce_front/new/m2commerce_front/src/app/layout.tsx
+// File: D:\RESUME\EStore\M2commerse\m2commerce_front\src\app\layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
