@@ -74,7 +74,7 @@ interface VerticalTabsProps {
         <Tab label="Item Seven" {...a11yProps(6)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <Link href='/products'>
+        <Link href='/shop/search'>
         Item One
         </Link>
        
