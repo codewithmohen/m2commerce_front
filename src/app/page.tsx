@@ -1,9 +1,6 @@
-'use client'
+"use client";
 
-import ContainFirstPage from "./ContainFirstPage"
-import Footer from "./Footer"
-import Header from "./Header"
-import Shop from "./shop/page";
+import Shop from "./shop-mr/page";
 
 export default function Home() {
   return (
@@ -15,7 +12,7 @@ export default function Home() {
       <footer>
         <Footer />
       </footer> */}
-      <Shop/>
+      <Shop />
     </>
   );
 }
