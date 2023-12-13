@@ -3,20 +3,19 @@
 import ContainFirstPage from "./ContainFirstPage"
 import Footer from "./Footer"
 import Header from "./Header"
+import Shop from "./shop/page";
 
 export default function Home() {
   return (
     <>
-      <Header />
-
-      <main style={{ marginTop: '130px' }}>
+      {/* <Header />
+      <main style={{ marginTop: "130px" }}>
         <ContainFirstPage />
-        <h1>Home</h1>
       </main>
-
-      <footer >
+      <footer>
         <Footer />
-      </footer>
+      </footer> */}
+      <Shop/>
     </>
-  )
+  );
 }

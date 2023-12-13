@@ -27,61 +27,78 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
     return (
         <>
-            <nav aria-lable="Side list items">
-                {/* <List  
+        <nav aria-lable="Side list items">
+          {/* <List  
  href="/dashboard"
 >*/}
-                {
-                    // [...Array(5)].map(item => (
-                    //     <List sx={{ p: 0 ,display:"flex"}}>
-                    //         <ListItem sx={{display:"flex"}}>
-                    //             <ListItemButton>
-                    //                 <ListItemIcon>ssf</ListItemIcon>
-                    //                 <ListItemText>safsas</ListItemText>
-                    //             </ListItemButton>
-                    //         </ListItem>
-                    //     </List>
+          {
+            // [...Array(5)].map(item => (
+            //     <List sx={{ p: 0 ,display:"flex"}}>
+            //         <ListItem sx={{display:"flex"}}>
+            //             <ListItemButton>
+            //                 <ListItemIcon>ssf</ListItemIcon>
+            //                 <ListItemText>safsas</ListItemText>
+            //             </ListItemButton>
+            //         </ListItem>
+            //     </List>
 
-                    //     <Tabs
-                    //     value={value}
-                    //     onChange={handleChange}
-                    //     textColor="secondary"
-                    //     indicatorColor="secondary"
-                    //     aria-label="secondary tabs example"
-                    //   >
-                    //     <Tab value="one" label="Item One" />
-                    //     <Tab value="two" label="Item Two" />
-                    //     <Tab value="three" label="Item Three" />
-                    //   </Tabs>
+            //     <Tabs
+            //     value={value}
+            //     onChange={handleChange}
+            //     textColor="secondary"
+            //     indicatorColor="secondary"
+            //     aria-label="secondary tabs example"
+            //   >
+            //     <Tab value="one" label="Item One" />
+            //     <Tab value="two" label="Item Two" />
+            //     <Tab value="three" label="Item Three" />
+            //   </Tabs>
 
-                    <Box sx={{ direction: "rtl" }}>
+            <Box sx={{ direction: "rtl" }}>
+              <Stack direction="row" spacing={2} alignItems="flex-start">
+                <ButtonGroup aria-label="text button group" sx={{ pr: 3.5 }}>
+                  <ProductsHover IsShown={isShown} setIsShown={setIsShown} />
 
-                        <Stack direction="row" spacing={2} alignItems="flex-start" >
-                            <ButtonGroup aria-label="text button group" sx={{ pr: 3.5}}>
+                  {/* <span className={styles.line}>|</span> */}
 
-                                <ProductsHover IsShown={isShown} setIsShown={setIsShown} />
-
-                                {/* <span className={styles.line}>|</span> */}
-
-                                {/* <button className={styles.button}>شگفت انگیزها </button>
+                  {/* <button className={styles.button}>شگفت انگیزها </button>
                                 <button className={styles.button}>پر فروش ترین ها</button>
                                 <button className={styles.button}> تخفیف ها و پیشنهاد ها</button> */}
-                                <Button variant="text" className={styles.button} startIcon={<PercentIcon />} > شگفت انگیزها </Button>
-                                <Button variant="text" className={styles.button} startIcon={<WhatshotIcon />} > پر فروش ترین ها </Button>
-                                <Button variant="text" className={styles.button} startIcon={<LocalOfferIcon />} >  تخفیف ها و پیشنهاد ها </Button>
+                  <Button
+                    variant="text"
+                    className={styles.button}
+                    startIcon={<PercentIcon />}
+                  >
+                    {" "}
+                    شگفت انگیزها{" "}
+                  </Button>
+                  <Button
+                    variant="text"
+                    className={styles.button}
+                    startIcon={<WhatshotIcon />}
+                  >
+                    {" "}
+                    پر فروش ترین ها{" "}
+                  </Button>
+                  <Button
+                    variant="text"
+                    className={styles.button}
+                    startIcon={<LocalOfferIcon />}
+                  >
+                    {" "}
+                    تخفیف ها و پیشنهاد ها{" "}
+                  </Button>
 
-                                {/* <span className={styles.line}>|</span> */}
+                  {/* <span className={styles.line}>|</span> */}
+                </ButtonGroup>
+              </Stack>
+            </Box>
 
-                            </ButtonGroup>
-                        </Stack>
-                    </Box>
-
-                    // ))
-                }
-                {/* </List> */}
-
-            </nav>
-        </>
+            // ))
+          }
+          {/* </List> */}
+        </nav>
+      </>
     );
 }
 

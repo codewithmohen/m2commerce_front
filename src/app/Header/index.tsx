@@ -20,7 +20,7 @@ export default function HideAppBar() {
   const trigger = useScrollTrigger();
 
   return (
-    <Box sx={hideOnMobile}>
+    <Box sx={hideOnMobile} style={{marginTop:"95px"}}>
       <UpHeader />
       <Slide appear={false} direction="down" in={!trigger} >
         {/* <AppBar> */}
