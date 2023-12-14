@@ -22,7 +22,7 @@ const Footer = () => {
                 <Linker_footer />
 
 
-                <BottomFooter/>
+                <BottomFooter />
             </Stack>
         </Box>
     );
