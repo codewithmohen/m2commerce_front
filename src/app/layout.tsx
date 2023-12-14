@@ -1,6 +1,6 @@
 'use client'
 import { Inter } from 'next/font/google'
-import { store } from './store'
+import { store } from './store/rootReducer'
 import { Provider } from 'react-redux'
 import AppThemeProvider from './theme/AppThemeProvider'
 import { CssBaseline } from '@mui/material'
@@ -20,7 +20,7 @@ export default function RootLayout({
         <CssBaseline />
         <html lang="en">
           <body>
-              {children}
+            {children}
           </body>
         </html>
       </AppThemeProvider>
