@@ -1,6 +1,6 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 import React from 'react';
-import { hideOnMobile } from '../styles/CustomeStyles';
+import { hideOnMobile } from '../../../styles/CustomeStyles';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Image from 'next/image';
 import logo from "/public/digifa.svg";
