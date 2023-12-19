@@ -14,6 +14,8 @@ import orginal from "/public/icons/original-products.svg";
 import Linker_footer from "./components/Linker_footer";
 import TopFooter from "./components/TopFooter";
 import BottomFooter from "./components/BottomFooter";
+import CakeSlice from "../../../features/cake/CakeView"
+// /app/features / cake / cakeSlice";
 
 const Footer = () => {
   return (
@@ -23,6 +25,7 @@ const Footer = () => {
         <Linker_footer />
 
         <BottomFooter />
+        <CakeSlice/>
       </Stack>
     </Box>
   );
