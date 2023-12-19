@@ -1,24 +1,33 @@
-import { Box, Button, Card, CardActions, FormControl, FormHelperText, OutlinedInput, TextField, Typography, useFormControl } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  FormControl,
+  FormHelperText,
+  OutlinedInput,
+  TextField,
+  Typography,
+  useFormControl,
+} from "@mui/material";
 import Image from "next/image";
 import img from "/public/logo.svg";
 import React from "react";
 
 const page = () => {
+  const MyFormHelperText: React.FC = () => {
+    const { focused }: { focused?: boolean } = useFormControl() || {};
 
-   const MyFormHelperText: React.FC = () => {
-     const { focused }: { focused?: boolean } = useFormControl() || {};
+    const helperText: string = React.useMemo(() => {
+      if (focused) {
+        return "This field is being focused";
+      }
 
-     const helperText: string = React.useMemo(() => {
-       if (focused) {
-         return "This field is being focused";
-       }
+      return "Helper text";
+    }, [focused]);
 
-       return "Helper text";
-     }, [focused]);
-
-     return <FormHelperText>{helperText}</FormHelperText>;
-   };
-
+    return <FormHelperText>{helperText}</FormHelperText>;
+  };
 
   return (
     <Box
