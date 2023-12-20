@@ -15,6 +15,7 @@ import Linker_footer from "./components/Linker_footer";
 import TopFooter from "./components/TopFooter";
 import BottomFooter from "./components/BottomFooter";
 import CakeSlice from "../../../features/cake/CakeView"
+import UserView from "../../../features/user/UserView";
 // /app/features / cake / cakeSlice";
 
 const Footer = () => {
@@ -25,7 +26,8 @@ const Footer = () => {
         <Linker_footer />
 
         <BottomFooter />
-        <CakeSlice/>
+        <CakeSlice />
+        <UserView/>
       </Stack>
     </Box>
   );

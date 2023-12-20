@@ -2,10 +2,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './features/counter/counterSlice'
 import cakeSlice from './features/cake/cakeSlice'
+import userSlice from './features/user/userSlice'
 export const store = configureStore({
     reducer: {
         counter: counterReducer,
-        cake:cakeSlice
+        cake: cakeSlice,
+        user:userSlice
     },
 })
 
