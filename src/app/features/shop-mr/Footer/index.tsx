@@ -25,12 +25,19 @@ const Footer = () => {
         <TopFooter />
         <Linker_footer />
 
+<<<<<<< HEAD:src/app/(shop)/shop-mr/Footer/index.tsx
         <BottomFooter />
         <CakeSlice />
         <UserView/>
       </Stack>
     </Box>
   );
+=======
+                <BottomFooter />
+            </Stack>
+        </Box>
+    );
+>>>>>>> 64792c163fc8cd7fc32feaf25a1b6d6cf3dfb74a:src/app/features/shop-mr/Footer/index.tsx
 };
 
 export default Footer;

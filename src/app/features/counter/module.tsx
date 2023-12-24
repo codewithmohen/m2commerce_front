@@ -2,11 +2,11 @@
 
 
 import React from 'react'
-import type { RootState } from '../../app/store'
+import type { RootState } from '../../store/rootReducer'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from './../features/counter/counterSlice'
+import { decrement, increment } from './slice'
 
-export default function Counter() {
+export default function Module() {
     const count = useSelector((state: RootState) => state.counter.value)
     const dispatch = useDispatch()
 
