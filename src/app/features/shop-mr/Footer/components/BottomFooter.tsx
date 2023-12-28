@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 
-const Bottom = () => {
+const BottomFooter = () => {
     return (
         <>
             <Box sx={{ borderTop: ".5px solid grey", marginInline: 3 }}>
@@ -30,4 +30,4 @@ const Bottom = () => {
     );
 };
 
-export default Bottom;
+export default BottomFooter;

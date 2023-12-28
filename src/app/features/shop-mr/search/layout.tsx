@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "../Header";
 import ContainFirstPage from "./ContainFirstPage";
-import from "../";
+import Footer from "../Footer";
 
 export default function RootLayout({
   children,
@@ -15,7 +15,7 @@ export default function RootLayout({
       {children}
       <h1>Shop Layout</h1> */}
       {/* <Header /> */}
-      <Header />
+      <Header/>
       {children}
     </>
   );

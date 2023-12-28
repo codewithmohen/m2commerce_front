@@ -8,7 +8,7 @@ import support from '/public/icons/support.svg';
 import cash from '/public/icons/cash-on-delivery.svg';
 import orginal from '/public/icons/original-products.svg';
 
-const Top = () => {
+const TopFooter = () => {
     return (
         <>
             <Box sx={{ display: "flex", justifyContent: "space-between", flexGrow: 1, marginInline: 3, mt: 3 }} style={{ backgroundColor: "orange" }}>
@@ -51,4 +51,4 @@ const Top = () => {
     );
 };
 
-export default Top;
+export default TopFooter;

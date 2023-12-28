@@ -20,7 +20,7 @@ import React, { useMemo } from 'react';
 //   return <FormHelperText>{helperText}</FormHelperText>;
 // }
 const MyFormHelperText: React.FC = () => {
-    const { focused }: { focused?: boolean; } = useFormControl() || {};
+    const { focused }: { focused?: boolean } = useFormControl() || {};
 
     const helperText: string = useMemo(() => {
         if (focused) {
@@ -33,7 +33,7 @@ const MyFormHelperText: React.FC = () => {
     return <FormHelperText>{helperText}</FormHelperText>;
 };
 
-const Linker_ = () => {
+const Linker_footer = () => {
     return (
         <>
             <Box sx={{ bgcolor: "red", display: "flex", justifyContent: "space-between", marginBlock: '40px', marginInline: 3 }}>
@@ -115,4 +115,4 @@ const Linker_ = () => {
     );
 };
 
-export default Linker_;
+export default Linker_footer;
