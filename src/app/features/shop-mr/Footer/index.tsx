@@ -14,8 +14,8 @@ import orginal from "/public/icons/original-products.svg";
 import Linker_footer from "./components/Linker_footer";
 import TopFooter from "./components/TopFooter";
 import BottomFooter from "./components/BottomFooter";
-import CakeSlice from "../../cake/CakeView"
-import UserView from "../../user/UserView";
+import CakeSlice from "../../cake/page"
+import UserView from "../../user/page";
 // /app/features / cake / cakeSlice";
 
 const Footer = () => {
