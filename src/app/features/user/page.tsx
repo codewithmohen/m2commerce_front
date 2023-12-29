@@ -1,50 +1,8 @@
-'use client';
-import React, { useEffect } from 'react';
-import { fetchUsers } from './userSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import React from 'react';
+import Module from './user.module';
 
-
-interface User {
-    id: number;
-    name: string;
-}
-
-interface UserState {
-    loading: boolean;
-    users: User[];
-    error: string;
-}
-
-// function UserView(props) {
-const UserView: React.FC = () => {
-
-
-    const user = useSelector((state: RootState) => state.user) as UserState;
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchUsers());
-    }, [dispatch]);
-
+export default function page() {
     return (
-        <div>
-            <h2>user view</h2>
-            {user.loading && <div>loading...</div>}
-            {!user.loading && user.error ? <div>Error:{user.error}</div> : null}
-            {!user.loading && user.users.length ? (
-
-                <ul>
-                    {
-                        user.users.map(user => (
-                            <li key={user.id}>{user.name}</li>
-                        ))
-                    }
-                </ul>
-            )
-                : null}
-        </div>
+        <Module />
     );
-};
-
-export default UserView;
+}
