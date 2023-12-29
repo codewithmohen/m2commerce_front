@@ -54,8 +54,9 @@ interface VerticalTabsProps {
   };
 
   return (
-    <Box onMouseLeave={() => setIsShown(false)}
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }}
+    <Box
+      onMouseLeave={() => setIsShown(false)}
+      sx={{ flexGrow: 1, bgcolor: "background.paper", display: "flex" }}
     >
       <Tabs
         orientation="vertical"
@@ -63,7 +64,7 @@ interface VerticalTabsProps {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+        sx={{ borderRight: 1, borderColor: "divider" }}
       >
         <Tab label="Item One" {...a11yProps(0)} />
         <Tab label="Item Two" {...a11yProps(1)} />
@@ -74,10 +75,7 @@ interface VerticalTabsProps {
         <Tab label="Item Seven" {...a11yProps(6)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <Link href='/shop-mr/search'>
-        Item One
-        </Link>
-       
+        <Link href="/features/shop-mr/search">Item One</Link>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
