@@ -35,12 +35,6 @@ const userSlice = createSlice({
 			state.users = action.payload;
 			state.error = '';
 		});
-		// builder.addCase(fetchUsers.rejected, (state, action: PayloadAction<string>) => {
-		// 	state.loading = false;
-		// 	state.users = [];
-		// 	state.error = action.payload;
-		// 	//   error.message;
-		// });
 	},
 });
 
