@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Slide from "@mui/material/Slide";
 import UpHeader from "./UpHeader";
-import { hideOnMobile, slidingHeader } from "./../styles/CustomeStyles";
+import { hideOnMobile, slidingHeader } from "../styles/CustomeStyles";
 import NavBarList from "./NavBarList";
 import PlaceIcon from '@mui/icons-material/Place';
 
@@ -20,18 +20,14 @@ export default function HideAppBar() {
   const trigger = useScrollTrigger();
 
   return (
-<<<<<<<< HEAD:src/app/features/shop-mr/Header/index.tsx
-    <Box sx={hideOnMobile} style={{ marginTop: "95px" }}>
-========
     <Box sx={hideOnMobile} style={{marginTop:"95px"}}>
->>>>>>>> main:src/app/(shop)/shop-mr/Header/index.tsx
       <UpHeader />
       <Slide appear={false} direction="down" in={!trigger} >
         {/* <AppBar> */}
         {/* <Toolbar> */}
-        <Box sx={slidingHeader} style={{ zIndex: 100 }}>
+        <Box sx={slidingHeader} style={{zIndex:100}}>
 
-          <Box sx={{ display: "flex", color: "grey", alignItems: "center", ml: "30px", mb: '5px' }}>
+          <Box sx={{ display: "flex", color: "grey", alignItems: "center" ,ml:"30px",mb:'5px'}}>
             <Typography sx={{ mr: "10px" }}>
               لطفا شهر خود را گزینش کنید
             </Typography>

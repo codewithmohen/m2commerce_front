@@ -1,7 +1,7 @@
 // "use client";
 // import React from "react";
 import Header from "../../Header";
-import from "../../";
+import Footer from "../../Footer";
 
 export default function RootLayout({
   children,
@@ -12,7 +12,7 @@ export default function RootLayout({
     <>
       <Header />
       {children}
-      < />
+      <Footer />
     </>
   );
 }
