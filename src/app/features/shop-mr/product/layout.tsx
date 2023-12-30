@@ -1,5 +1,5 @@
 // "use client";
-import from "../";
+import Footer from "../Footer";
 import Header from "../Header";
 
 export default function RootLayout({
@@ -11,7 +11,7 @@ export default function RootLayout({
     <>
       <Header />
       {children}
-      < />
+      <Footer />
     </>
   );
 }
