@@ -8,19 +8,27 @@ import SugestionSlider from './SugestionSlider';
 import Banners from './Banners';
 import CategoryProduct from './CategoryProduct';
 import SugestionSliderTwo from './SugestionSliderTwo';
+import HideAppBar from '../Header';
+import Footer from '../Footer';
 
 function Story() {
     return (
         <>
-            <Stories />
-            <Slider />
-            <Container maxWidth="xl">
-                {/* <Linker/> */}
-                <SugestionSlider />
-                <Banners />
-                <CategoryProduct />
-                <SugestionSliderTwo />
-            </Container>
+            <HideAppBar />
+            <main style={{ marginTop: "130px" }}>
+                <Stories />
+                <Slider />
+                <Container maxWidth="xl">
+                    {/* <Linker/> */}
+                    <SugestionSlider />
+                    <Banners />
+                    <CategoryProduct />
+                    <SugestionSliderTwo />
+                </Container>
+            </main>
+            <footer>
+                <Footer />
+            </footer>
         </>
 
     );
