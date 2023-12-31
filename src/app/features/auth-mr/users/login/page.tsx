@@ -1,33 +1,22 @@
+'use client'
 import {
   Box,
   Button,
   Card,
   CardActions,
-  FormControl,
   FormHelperText,
   OutlinedInput,
   TextField,
   Typography,
   useFormControl,
+  FormControl,
 } from "@mui/material";
 import Image from "next/image";
 import img from "/public/logo.svg";
 import React from "react";
 
-const page = () => {
-  const MyFormHelperText: React.FC = () => {
-    const { focused }: { focused?: boolean } = useFormControl() || {};
 
-    const helperText: string = React.useMemo(() => {
-      if (focused) {
-        return "This field is being focused";
-      }
-
-      return "Helper text";
-    }, [focused]);
-
-    return <FormHelperText>{helperText}</FormHelperText>;
-  };
+const Login = () => {
 
   return (
     <Box
@@ -35,48 +24,81 @@ const page = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        bgcolor: "yellow",
-        //   width: "100%",
-        //   height: "100%",
+        height: "100vh",
       }}
     >
-      <Card variant="outlined">
-        <Box
-          sx={{
-            //   display:"flex",
-            padding: "10px",
-            border: "1px solid grey",
-            borderRadius: "5px",
-            // alignItems: "center",
-          }}
-        >
-          <Image src={img} height={50} width={100} alt="image"></Image>
-          <Typography>ورود | ثبت‌نام</Typography>
-          <Typography>سلام !</Typography>
-          <Typography>لطفا شماره موبایل یا ایمیل خود را وارد کنید</Typography>
-          <form noValidate autoComplete="off">
-            <FormControl sx={{ width: "25ch" }}>
-              <OutlinedInput placeholder="Please enter text" />
-              {/* <MyFormHelperText /> */}
-            </FormControl>
-          </form>
-          <Button sx={{ bgcolor: "red", width: "100%", color: "white" }}>
-            ورود
-          </Button>
-          <Typography>لطفا شماره موبایل یا ایمیل خود را وارد کنید</Typography>
-          <CardActions>
-            <Box sx={{ display: "flex" }}>
-              <Button size="small">مقررات</Button>و
-              <Button size="small">شرایط دیجی کالا </Button>
-              <Typography>
-                لطفا شماره موبایل یا ایمیل خود را وارد کنید
-              </Typography>
+      <Box
+        sx={{
+          direction: "rtl",
+        }}
+      >
+        <Card >
+          <Box
+            sx={{
+              padding: "10px",
+              border: "1px solid #72738d",
+              borderRadius: "5px",
+              paddingInline: "25px",
+            }}
+          >
+            <Box
+              sx={{ display: "flex", justifyContent: "center", marginBlock: 2 }}
+            >
+              <Image src={img} height={50} width={150} alt="image"></Image>
             </Box>
-          </CardActions>
-        </Box>
-      </Card>
+            <Typography variant="h5">ورود | ثبت‌ نام</Typography>
+            <Typography component={"p"} sx={{ mt: 2, mb: 1, color: "#72738d" }}>
+              سلام !
+            </Typography>
+            <Typography sx={{ mb: 2, color: "#72738d" }}>
+              لطفا شماره موبایل یا ایمیل خود را وارد کنید
+            </Typography>
+            <form noValidate autoComplete="off">
+              <FormControl
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  borderRadius: "15px",
+                  mb: 6,
+                }}
+              >
+                <OutlinedInput placeholder="Please enter text" />
+                {/* <MyFormHelperText /> */}
+              </FormControl>
+            </form>
+            <Button
+              sx={{
+                bgcolor: "#ef4056",
+                width: "100%",
+                color: "white",
+                borderRadius: 1,
+                mb: 2,
+              }}
+            >
+              ورود
+            </Button>
+            <CardActions>
+              <Box sx={{ display: "flex", textIndent: "5px" }}>
+                <Typography>ورود شما به معنای پذیرش</Typography>
+                <Box sx={{ textDecoration: "none" }} component={"a"} href="#">
+                  مقررات
+                </Box>
+                و
+                <Box sx={{ textDecoration: "none" }} component={"a"} href="#">
+                  شرایط دیجی کالا
+                </Box>
+                است .
+              </Box>
+            </CardActions>
+          </Box>
+        </Card>
+      </Box>
     </Box>
   );
 };
 
-export default page;
+export default Login;
+
+

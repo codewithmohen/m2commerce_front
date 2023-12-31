@@ -17,19 +17,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+<<<<<<< Updated upstream
 
     <AppThemeProvider>
       <CssBaseline />
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
+=======
+    <AppThemeProvider>
+      <Provider store={store}>
+        <CssBaseline />
+        <QueryClientProvider client={queryClient}>
+>>>>>>> Stashed changes
           <html lang="en">
-            <body>
-              {children}
-            </body>
+            <body>{children}</body>
           </html>
+<<<<<<< Updated upstream
         </Provider>
       </QueryClientProvider>
     </AppThemeProvider>
 
+=======
+        </QueryClientProvider>
+      </Provider>
+    </AppThemeProvider>
+>>>>>>> Stashed changes
   );
 }

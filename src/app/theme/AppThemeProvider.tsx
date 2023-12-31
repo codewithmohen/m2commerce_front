@@ -18,15 +18,18 @@ declare module '@mui/material/styles' {
   }
 
 const theme = createTheme({
-    palette: {
-        primary: {
-            main: grey[700]
-        },
-        secondary: {
-            main: pink[500]
-        }
-    }
-})
+  typography: {
+    fontFamily: "Rubik, sans-serif",
+  },
+  palette: {
+    primary: {
+      main: grey[700],
+    },
+    secondary: {
+      main: pink[500],
+    },
+  },
+});
 
 interface AppThemeProviderProps {
     children: ReactNode;
