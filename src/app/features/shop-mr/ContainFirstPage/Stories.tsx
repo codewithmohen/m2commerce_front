@@ -1,11 +1,11 @@
 import { ListItemAvatar, ListItem, ListItemText, Box, Stack, Avatar, Tabs, Tab, Typography } from '@mui/material';
 import React from 'react';
-import imgs from "logo.svg"
+import imgs from "logo.svg";
 // import WorkIcon from "@mui/icons-material/Icons"
-function Stories(props) {
+function Stories(props: any) {
     return (
 
-        <Stack direction='row' sx={{display:'flex',justifyContent:"center", padding: 0 }}>
+        <Stack direction='row' sx={{ display: 'flex', justifyContent: "center", padding: 0 }}>
 
             <Tabs
                 // value={value}

@@ -1,10 +1,10 @@
 import { ListItemAvatar, ListItem, ListItemText, Box, Stack, Avatar, Tabs, Tab, Typography } from '@mui/material';
 import React from 'react';
-import imgs from "public/logo.svg"
+import imgs from "public/logo.svg";
 
-function Linker(props) {
+function Linker(props: any) {
     return (
-        <Stack direction='row' sx={{ display: 'flex', justifyContent: "center", padding: 0, mt: '25px',marginInline:'190px' }}>
+        <Stack direction='row' sx={{ display: 'flex', justifyContent: "center", padding: 0, mt: '25px', marginInline: '190px' }}>
 
             {/* <Tabs
             // value={value}

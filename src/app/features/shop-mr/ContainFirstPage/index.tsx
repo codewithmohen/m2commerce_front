@@ -1,6 +1,6 @@
-import { Box,Container, Stack, Avatar, Tabs, Tab } from '@mui/material';
+import { Box, Container, Stack, Avatar, Tabs, Tab } from '@mui/material';
 import React from 'react';
-import imgs from "public/logo.svg"
+import imgs from "public/logo.svg";
 import Stories from './Stories';
 import Slider from './Slider';
 import Linker from './Linker';
@@ -12,15 +12,15 @@ import SugestionSliderTwo from './SugestionSliderTwo';
 function Story() {
     return (
         <>
-        <Stories/>
-        <Slider/>
-        <Container maxWidth="xl">
-        {/* <Linker/> */}
-        <SugestionSlider/>
-        <Banners/>
-        <CategoryProduct/>
-        <SugestionSliderTwo/>
-        </Container>
+            <Stories />
+            <Slider />
+            <Container maxWidth="xl">
+                {/* <Linker/> */}
+                <SugestionSlider />
+                <Banners />
+                <CategoryProduct />
+                <SugestionSliderTwo />
+            </Container>
         </>
 
     );
