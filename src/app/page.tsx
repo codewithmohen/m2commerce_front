@@ -1,11 +1,15 @@
 "use client";
 
-import Shop from "./features/shop-mr/page";
+import React from "react";
+import Shop from "./(shop)/shop/page";
+import Layout from "./layout";
 
-export default function Home() {
-  return (
-    <>
-      <Shop/>
-    </>
-  );
+export default function index() {
+    return (
+        <>
+            <Layout>
+                <Shop />
+            </Layout>
+        </>
+    );
 }
