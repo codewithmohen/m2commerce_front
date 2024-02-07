@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-const context = require.context('./', true, /\.slice\.tsx$/i);
+const context = require.context('./', true, /\.slice\.ts$/i);
 const reducers = context.keys().reduce((acc: any, key) => {
   const reducerNamePattern = /([^\/]+)$/;
   const reducerName = key.match(reducerNamePattern)?.toString().split('.')[0] as string;
