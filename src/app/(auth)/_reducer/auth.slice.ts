@@ -35,16 +35,10 @@ export const initialState: IAuthState = {
 export const signIn = createAsyncThunk(
 	'auth/sign-in',
 	async ({ username, password }: { username: string; password: string }) => {
-		// export const signIn = createAsyncThunk('auth/sign-in', async () => {
-		// const { username, password } = yourData;
-		console.log('.......', username, password);
-
 		try {
 			const response = await axios.post('http://localhost:1337/api/auth/local', {
 				identifier: username,
 				password: password,
-				// identifier: 'codewithmohsen@gmail.com',
-				// password: 'Bahar1391',
 			});
 			return response.data;
 		} catch (error) {
