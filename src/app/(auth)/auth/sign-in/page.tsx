@@ -21,7 +21,7 @@ const defaultTheme = createTheme();
 
 export default function index() {
 
-    const [loadPage, setLoadPage] = useState(false);
+    const [loadPage, setLoadPage] = useState(true);
     const auth = useSelector((state: any) => state.auth) as IAuthState;
     const dispatch = useDispatch<any>();
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -29,18 +29,8 @@ export default function index() {
         const data = new FormData(event.currentTarget);
         const email = data.get('email') as string;
         const password = data.get('password') as string;
-        console.log({
-            email,
-            password
-        });
         dispatch(signIn({ username: email, password: password }));
     };
-    useEffect(() => {
-        setLoadPage(true);
-        if (auth.data?.jwt) {
-            redirect('/dashboard');
-        }
-    }, []);
     return (
         loadPage && <>
             <Avatar sx={{ m: 1, bgcolor: 'primary.light' }}>

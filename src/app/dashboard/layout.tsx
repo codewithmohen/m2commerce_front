@@ -23,6 +23,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import Paper from '@mui/material/Paper';
 // import AppBar from '@mui/material/AppBar';
 import logo from './../_assets/m2.png';
+import useSecure from '../_hooks/useSecure';
+import CircularProgress from '@mui/material/CircularProgress';
+import Loading from '../_components/loading';
 
 const drawerWidth = 240;
 
@@ -79,6 +82,8 @@ export default function Layout({
     // export default function PersistentDrawerLeft() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [isSafe, setSafe] = React.useState(false);
+    useSecure(setSafe);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -89,80 +94,89 @@ export default function Layout({
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
-            {/* <CssBaseline /> */}
-            <AppBar position="fixed" theme={theme} open={open} sx={{ bgcolor: 'secondary.main' }}>
-                <Toolbar>
-                    <IconButton
+        <>
+            {isSafe &&
+                <>
+                    <Box sx={{ display: 'flex' }}>
+                        <AppBar position="fixed" theme={theme} open={open} sx={{ bgcolor: 'secondary.main' }}>
+                            <Toolbar>
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="open drawer"
+                                    edge="end"
+                                    onClick={handleDrawerOpen}
+                                    sx={{ ...(open && { display: 'none' }), marginRight: 4 }}
+                                >
+                                    <MenuIcon />
+                                </IconButton>
+                                <Box sx={{ margin: 1 }}>
+                                    <img src={logo.src} style={{ height: 36, margin: 1 }} />
+                                </Box>
+                                <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
+                                    Dashboard
+                                </Typography>
 
-                        color="inherit"
-                        aria-label="open drawer"
-                        edge="end"
-                        onClick={handleDrawerOpen}
-                        sx={{ ...(open && { display: 'none' }), marginRight: 4 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Box sx={{ margin: 1 }}>
-                        <img src={logo.src} style={{ height: 36, margin: 1 }} />
+                            </Toolbar>
+                        </AppBar>
+                        <Main theme={theme} open={open}>
+                            <DrawerHeader />
+                            {children}
+                        </Main>
+                        <Drawer
+                            sx={{
+                                // width: drawerWidth,
+                                flexShrink: 0,
+                                '& .MuiDrawer-paper': {
+                                    width: drawerWidth,
+                                },
+                            }}
+                            variant="persistent"
+                            anchor="left"
+                            open={open}
+                        >
+                            <DrawerHeader sx={{ justifyContent: 'flex-end' }}>
+                                <IconButton onClick={handleDrawerClose} >
+                                    <ChevronLeftIcon />
+                                    {/* {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />} */}
+                                </IconButton>
+                            </DrawerHeader>
+                            {/* <Divider /> */}
+                            <List>
+                                <p>Modules</p>
+                                {['Shop', 'Auth'].map((text, index) => (
+                                    <ListItem key={text} disablePadding>
+                                        <ListItemButton>
+                                            {/* <ListItemIcon>
+                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                </ListItemIcon> */}
+                                            <ListItemText primary={text} />
+                                        </ListItemButton>
+                                    </ListItem>
+                                ))}
+                            </List>
+                            {/* <Divider /> */}
+                            <List>
+                                <p>Core</p>
+                                {['Modules', 'Config', 'Sign-out'].map((text, index) => (
+                                    <ListItem key={text} disablePadding>
+                                        <ListItemButton>
+                                            {/* <ListItemIcon>
+                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                </ListItemIcon> */}
+                                            <ListItemText primary={text} />
+                                        </ListItemButton>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </Drawer>
                     </Box>
-                    <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-                        Dashboard
-                    </Typography>
+                </>
+            }
+            {!isSafe &&
 
-                </Toolbar>
-            </AppBar>
-            <Main theme={theme} open={open}>
-                <DrawerHeader />
-                {children}
-            </Main>
-            <Drawer
-                sx={{
-                    // width: drawerWidth,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                        width: drawerWidth,
-                    },
-                }}
-                variant="persistent"
-                anchor="left"
-                open={open}
-            >
-                <DrawerHeader sx={{ justifyContent: 'flex-end' }}>
-                    <IconButton onClick={handleDrawerClose} >
-                        <ChevronLeftIcon />
-                        {/* {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />} */}
-                    </IconButton>
-                </DrawerHeader>
-                {/* <Divider /> */}
-                <List>
-                    <p>Modules</p>
-                    {['Shop', 'Auth'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                {/* <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon> */}
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-                {/* <Divider /> */}
-                <List>
-                    <p>Core</p>
-                    {['Modules', 'Config', 'Sign-out'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                {/* <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon> */}
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-            </Drawer>
-        </Box>
+
+                <Loading />
+            }
+        </>
     );
 }

@@ -1,30 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-export interface ISuccessData {
-	jwt: string;
-	user: {
-		id: number;
-		username: string;
-		email: string;
-		provider: string;
-		confirmed: boolean;
-		blocked: boolean;
-		createdAt: Date;
-		updatedAt: Date;
-	};
-}
-export interface IError {
-	status: number;
-	name: string;
-	message: string;
-	details: any;
-}
-export interface IAuthState {
-	loading: boolean;
-	data: ISuccessData | null;
-	error: IError | null;
-}
+import { IAuthState } from './interfaces';
 
 export const initialState: IAuthState = {
 	loading: false,

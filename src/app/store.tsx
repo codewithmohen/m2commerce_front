@@ -40,4 +40,4 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const persistor = persistStore(store);
 
-// store.subscribe(() => console.log("An action has ben fired here ", store.getState().auth));
+store.subscribe(() => console.log("Error: ", store.getState().auth.error.message));
