@@ -14,12 +14,14 @@ import { createTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { IAuthState, signIn } from '../../_reducer/auth.slice';
 import { redirect } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function index() {
 
+    const [loadPage, setLoadPage] = useState(false);
     const auth = useSelector((state: any) => state.auth) as IAuthState;
     const dispatch = useDispatch<any>();
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -33,12 +35,14 @@ export default function index() {
         });
         dispatch(signIn({ username: email, password: password }));
     };
-    React.useEffect(() => {
-        if (auth.data?.jwt)
+    useEffect(() => {
+        setLoadPage(true);
+        if (auth.data?.jwt) {
             redirect('/dashboard');
-    }, [dispatch]);
+        }
+    }, []);
     return (
-        <>
+        loadPage && <>
             <Avatar sx={{ m: 1, bgcolor: 'primary.light' }}>
                 <LockOutlinedIcon />
             </Avatar>
@@ -97,7 +101,6 @@ export default function index() {
                     </Grid>
                 </Grid>
             </Box>
-
         </>
     );
 };;
