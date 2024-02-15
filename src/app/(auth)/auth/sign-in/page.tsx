@@ -12,7 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { IAuthState, signIn } from '../../_reducer/auth.slice';
+import { signIn } from '../../_reducer/auth.slice';
+import { IAuthState } from '../../_reducer/interfaces';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 

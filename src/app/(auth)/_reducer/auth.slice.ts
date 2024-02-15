@@ -22,14 +22,14 @@ export const signIn = createAsyncThunk(
 		}
 	}
 );
-export const signOut = (state: IAuthState) => {
-	state.data = null;
-};
+
 const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		signOut,
+		signOut: (state) => {
+			state.data = null;
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(signIn.pending, (state: IAuthState, action: PayloadAction<any>) => {
@@ -49,3 +49,4 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
+export const { signOut } = authSlice.actions;

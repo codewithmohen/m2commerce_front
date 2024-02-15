@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { materialTheme } from './_assets/materialTheme';
 import logo from './_assets/logo-moraba-done.svg';
 import { redirect } from 'next/navigation';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IAuthState } from '../_reducer/interfaces';
 import Loading from '@/app/_components/loading';
 
@@ -14,6 +14,7 @@ export default function Layout({
 }: {
     children: React.ReactNode;
 }) {
+    const dispatch = useDispatch<any>();
     const [loadPage, setLoadPage] = useState(false);
     const auth = useSelector((state: any) => state.auth) as IAuthState;
     useEffect(() => {

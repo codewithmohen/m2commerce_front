@@ -26,7 +26,21 @@ import logo from './../_assets/m2.png';
 import useSecure from '../_hooks/useSecure';
 import CircularProgress from '@mui/material/CircularProgress';
 import Loading from '../_components/loading';
+import DraftsIcon from '@mui/icons-material/Drafts';
+import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone';
+import SupervisedUserCircleTwoToneIcon from '@mui/icons-material/SupervisedUserCircleTwoTone';
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 
+import ArrowCircleLeftTwoToneIcon from '@mui/icons-material/ArrowCircleLeftTwoTone';
+import { AccountCircle, StayPrimaryPortraitSharp } from '@mui/icons-material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { signOut } from '../(auth)/_reducer/auth.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { IAuthState } from '../(auth)/_reducer/interfaces';
+import { AppDispatch } from '../store';
+import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -83,6 +97,11 @@ export default function Layout({
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [isSafe, setSafe] = React.useState(false);
+    // const [auth, setAuth] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const auth = useSelector((state: any) => state.auth) as IAuthState;
+    const dispatch: AppDispatch = useDispatch();
+    const { push } = useRouter();
     useSecure(setSafe);
 
     const handleDrawerOpen = () => {
@@ -92,6 +111,17 @@ export default function Layout({
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const handleSignOut = () => {
+        dispatch(signOut());
+        push('/auth/sign-in');
+    };
+
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const handleListItemClick = (event: any, index: any) => {
+        setSelectedIndex(index);
+    };
+
 
     return (
         <>
@@ -115,8 +145,18 @@ export default function Layout({
                                 <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
                                     Dashboard
                                 </Typography>
-
+                                <IconButton
+                                    size="large"
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={(event) => handleSignOut()}
+                                    color="inherit"
+                                >
+                                    <AccountCircle />
+                                </IconButton>
                             </Toolbar>
+
                         </AppBar>
                         <Main theme={theme} open={open}>
                             <DrawerHeader />
@@ -124,6 +164,7 @@ export default function Layout({
                         </Main>
                         <Drawer
                             sx={{
+
                                 // width: drawerWidth,
                                 flexShrink: 0,
                                 '& .MuiDrawer-paper': {
@@ -135,46 +176,48 @@ export default function Layout({
                             open={open}
                         >
                             <DrawerHeader sx={{ justifyContent: 'flex-end' }}>
+
                                 <IconButton onClick={handleDrawerClose} >
-                                    <ChevronLeftIcon />
+                                    <ArrowCircleLeftTwoToneIcon />
                                     {/* {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />} */}
                                 </IconButton>
                             </DrawerHeader>
                             {/* <Divider /> */}
                             <List>
-                                <p>Modules</p>
-                                {['Shop', 'Auth'].map((text, index) => (
-                                    <ListItem key={text} disablePadding>
-                                        <ListItemButton>
-                                            {/* <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon> */}
-                                            <ListItemText primary={text} />
-                                        </ListItemButton>
-                                    </ListItem>
-                                ))}
+                                <ListItemButton
+                                    selected={selectedIndex === 1}
+                                    onClick={(event) => handleListItemClick(event, 1)}
+                                >
+                                    <ListItemIcon>
+                                        <SupervisedUserCircleTwoToneIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Auth" />
+                                </ListItemButton>
+                                <ListItemButton
+                                    selected={selectedIndex === 1}
+                                    onClick={(event) => handleListItemClick(event, 1)}
+                                >
+                                    <ListItemIcon>
+                                        <StorefrontTwoToneIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Shop" />
+                                </ListItemButton>
+                                <ListItemButton
+                                    selected={selectedIndex === 1}
+                                    onClick={(event) => handleListItemClick(event, 1)}
+                                >
+                                    <ListItemIcon>
+                                        <SettingsTwoToneIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Config" />
+                                </ListItemButton>
                             </List>
-                            {/* <Divider /> */}
-                            <List>
-                                <p>Core</p>
-                                {['Modules', 'Config', 'Sign-out'].map((text, index) => (
-                                    <ListItem key={text} disablePadding>
-                                        <ListItemButton>
-                                            {/* <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon> */}
-                                            <ListItemText primary={text} />
-                                        </ListItemButton>
-                                    </ListItem>
-                                ))}
-                            </List>
+
                         </Drawer>
                     </Box>
                 </>
             }
             {!isSafe &&
-
-
                 <Loading />
             }
         </>
