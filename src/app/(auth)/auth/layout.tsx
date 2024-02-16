@@ -19,7 +19,7 @@ export default function Layout({
     const auth = useSelector((state: any) => state.auth) as IAuthState;
     useEffect(() => {
         if (auth.data?.jwt) {
-            redirect('/dashboard');
+            redirect('/admin');
         }
         setLoadPage(true);
     }, [auth.data?.jwt]);

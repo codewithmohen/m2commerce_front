@@ -30,7 +30,7 @@ import DraftsIcon from '@mui/icons-material/Drafts';
 import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone';
 import SupervisedUserCircleTwoToneIcon from '@mui/icons-material/SupervisedUserCircleTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
-
+import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 import ArrowCircleLeftTwoToneIcon from '@mui/icons-material/ArrowCircleLeftTwoTone';
 import { AccountCircle, StayPrimaryPortraitSharp } from '@mui/icons-material';
 import Menu from '@mui/material/Menu';
@@ -116,6 +116,9 @@ export default function Layout({
         dispatch(signOut());
         push('/auth/sign-in');
     };
+    const handleAuthSetting = () => {
+        push('/admin/auth/setting');
+    };
 
     const [selectedIndex, setSelectedIndex] = React.useState(1);
     const handleListItemClick = (event: any, index: any) => {
@@ -143,8 +146,18 @@ export default function Layout({
                                     <img src={logo.src} style={{ height: 36, margin: 1 }} />
                                 </Box>
                                 <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-                                    Dashboard
+                                    Admin Dashboard
                                 </Typography>
+                                <IconButton
+                                    size="large"
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={(event) => handleAuthSetting()}
+                                    color="inherit"
+                                >
+                                    <AccountCircle />
+                                </IconButton>
                                 <IconButton
                                     size="large"
                                     aria-label="account of current user"
@@ -153,7 +166,7 @@ export default function Layout({
                                     onClick={(event) => handleSignOut()}
                                     color="inherit"
                                 >
-                                    <AccountCircle />
+                                    <LogoutTwoToneIcon />
                                 </IconButton>
                             </Toolbar>
 
