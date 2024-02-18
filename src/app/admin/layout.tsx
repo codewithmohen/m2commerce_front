@@ -6,41 +6,32 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import Paper from '@mui/material/Paper';
 // import AppBar from '@mui/material/AppBar';
 import logo from './../_assets/m2.png';
 import useSecure from '../_hooks/useSecure';
-import CircularProgress from '@mui/material/CircularProgress';
 import Loading from '../_components/loading';
-import DraftsIcon from '@mui/icons-material/Drafts';
 import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone';
 import SupervisedUserCircleTwoToneIcon from '@mui/icons-material/SupervisedUserCircleTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 import ArrowCircleLeftTwoToneIcon from '@mui/icons-material/ArrowCircleLeftTwoTone';
-import { AccountCircle, StayPrimaryPortraitSharp } from '@mui/icons-material';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { AccountCircle } from '@mui/icons-material';
 import { signOut } from '../(auth)/_reducer/auth.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { IAuthState } from '../(auth)/_reducer/interfaces';
 import { AppDispatch } from '../store';
-import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
+import Grid from '@mui/material/Grid';
+import M2Breadcrumbs from './_components/M2Breadcrumbs';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import { Link } from '@mui/material';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -142,38 +133,45 @@ export default function Layout({
                                 >
                                     <MenuIcon />
                                 </IconButton>
-                                <Box sx={{ margin: 1 }}>
-                                    <img src={logo.src} style={{ height: 36, margin: 1 }} />
-                                </Box>
+                                <Link href="/admin">
+                                    <Box sx={{ margin: 1 }}>
+                                        <img src={logo.src} style={{ height: 36, margin: 1 }} />
+                                    </Box>
+                                </Link>
                                 <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
                                     Admin Dashboard
                                 </Typography>
                                 <IconButton
                                     size="large"
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
-                                    onClick={(event) => handleAuthSetting()}
                                     color="inherit"
+                                    href='/'
+                                >
+                                    <LanguageOutlinedIcon />
+                                </IconButton>
+                                <IconButton
+                                    size="large"
+                                    color="inherit"
+                                    href='/admin/auth'
                                 >
                                     <AccountCircle />
                                 </IconButton>
                                 <IconButton
                                     size="large"
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
                                     onClick={(event) => handleSignOut()}
                                     color="inherit"
                                 >
                                     <LogoutTwoToneIcon />
                                 </IconButton>
                             </Toolbar>
-
                         </AppBar>
                         <Main theme={theme} open={open}>
                             <DrawerHeader />
-                            {children}
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <M2Breadcrumbs />
+                                </Grid>
+                                {children}
+                            </Grid>
                         </Main>
                         <Drawer
                             sx={{
@@ -199,7 +197,8 @@ export default function Layout({
                             <List>
                                 <ListItemButton
                                     selected={selectedIndex === 1}
-                                    onClick={(event) => handleListItemClick(event, 1)}
+                                    href='/admin/auth'
+                                // onClick={(event) => handleListItemClick(event, 1)}
                                 >
                                     <ListItemIcon>
                                         <SupervisedUserCircleTwoToneIcon />

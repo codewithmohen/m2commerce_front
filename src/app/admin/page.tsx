@@ -4,6 +4,7 @@ import useSecure from '../_hooks/useSecure';
 import 'react-data-grid/lib/styles.css';
 
 import DataGrid from 'react-data-grid';
+import Grid from '@mui/material/Grid';
 export default function index() {
     const [loadPage, setLoadPage] = useState(false);
     const columns = [
@@ -16,7 +17,14 @@ export default function index() {
     ];
     useSecure(setLoadPage);
     return (
-        loadPage && <DataGrid columns={columns} rows={rows} />
+        loadPage &&
+        <>
+            <Grid item xs={12} spacing={2}>
+                <DataGrid columns={columns} rows={rows} />
+            </Grid>
+        </>
+
+
     );
 }
 
