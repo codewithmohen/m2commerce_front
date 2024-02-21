@@ -16,12 +16,12 @@ import { signIn } from '../../_reducer/auth.slice';
 import { IAuthState } from '../../_reducer/interfaces';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { enqueueSnackbar, SnackbarProvider } from 'notistack';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function index() {
-
     const [loadPage, setLoadPage] = useState(true);
     const auth = useSelector((state: any) => state.auth) as IAuthState;
     const dispatch = useDispatch<any>();
@@ -30,10 +30,17 @@ export default function index() {
         const data = new FormData(event.currentTarget);
         const email = data.get('email') as string;
         const password = data.get('password') as string;
-        dispatch(signIn({ username: email, password: password }));
+        dispatch(signIn({ identifier: email, password: password }));
     };
+    useEffect(() => {
+        auth.error && enqueueSnackbar(auth.error, { variant: 'error' });
+    }, [auth.error]);
+    useEffect(() => {
+        auth.data?.jwt && enqueueSnackbar('Welcome', { variant: 'success' });
+    }, [auth.data?.jwt]);
     return (
         loadPage && <>
+            <SnackbarProvider />
             <Avatar sx={{ m: 1, bgcolor: 'primary.light' }}>
                 <LockOutlinedIcon />
             </Avatar>
@@ -48,6 +55,7 @@ export default function index() {
                     id="email"
                     label="Email Address"
                     name="email"
+                    value={"codewithmohsen@gmail.com"}
                     autoComplete="email"
                     autoFocus
                 />
@@ -59,7 +67,8 @@ export default function index() {
                     label="Password"
                     type="password"
                     id="password"
-                    autoComplete="current-password"
+                    autoComplete="password"
+                // value="Bahar1391"
                 />
                 <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}

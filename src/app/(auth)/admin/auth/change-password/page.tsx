@@ -8,12 +8,12 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IAuthState } from '@/app/(auth)/_reducer/interfaces';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
@@ -23,41 +23,75 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import M2Breadcrumbs from '@/app/admin/_components/M2Breadcrumbs';
+import { changePassword } from '@/app/(auth)/_reducer/auth.slice';
+import TextField from '@mui/material/TextField';
+import { redirect } from 'next/navigation';
+import { enqueueSnackbar, SnackbarProvider } from 'notistack';
 export default function index() {
-    const auth = useSelector((state: any) => state.auth) as IAuthState;
+    const [loadPage, setLoadPage] = useState(true);
+    const auth = useSelector((state: any) => state.auth) as any;
+    const dispatch = useDispatch<any>();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const password = data.get('password') as string;
+        const currentPassword = data.get('currentPassword') as string;
+        const passwordConfirmation = data.get('passwordConfirmation') as string;
+        console.log(password, currentPassword, passwordConfirmation);
 
-
+        dispatch(changePassword({ password: password, currentPassword: currentPassword, passwordConfirmation: passwordConfirmation }));
+        redirect('/admin');
+    };
+    useEffect(() => {
+        auth.error && enqueueSnackbar(auth.error, { variant: 'error' });
+    }, [auth.error]);
+    useEffect(() => {
+        auth.data?.jwt && enqueueSnackbar('Password Changed!', { variant: 'success' });
+    }, [auth.data?.jwt]);
     return (
         <>
-
-            <Grid item xs={4} spacing={2}>
+            <SnackbarProvider />
+            <Grid item xs={4}>
                 <Typography variant="h2">Change Password</Typography>
             </Grid>
-            <Grid item xs={8} spacing={2}>
-                <Paper>
-                    <Box p={2}>
-                        <FormGroup >
-                            <FormControl sx={{ m: 2 }}>
-                                <InputLabel htmlFor="Current-input">Current Password</InputLabel>
-                                <Input id="Current-input" aria-describedby="my-helper-text" />
-                            </FormControl>
-                            <FormControl sx={{ m: 2 }}>
-                                <InputLabel htmlFor="New-input">New Password</InputLabel>
-                                <Input id="New-input" aria-describedby="my-helper-text" />
-                            </FormControl>
-                            <FormControl sx={{ m: 2 }}>
-                                <InputLabel htmlFor="Confirm-input">Confirm New Password</InputLabel>
-                                <Input id="Confirm-input" aria-describedby="my-helper-text" />
-                            </FormControl>
-                            <FormControl sx={{ m: 2 }}>
-                                <Button variant="contained">Change</Button>
-                            </FormControl>
-                        </FormGroup>
-                    </Box>
-                </Paper>
+            <Grid item xs={8}>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="currentPassword"
+                        label="Current Password"
+                        name="currentPassword"
+                        autoFocus
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="password"
+                        label="Password"
+                        name="password"
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="passwordConfirmation"
+                        label="Password Confirmation"
+                        name="passwordConfirmation"
+                    />
+                    <Button
+                        color='primary'
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        Change
+                    </Button>
+                </Box>
             </Grid >
-
         </>
-
     );
 }

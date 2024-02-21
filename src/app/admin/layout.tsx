@@ -170,7 +170,9 @@ export default function Layout({
                                 <Grid item xs={12}>
                                     <M2Breadcrumbs />
                                 </Grid>
-                                {children}
+                                <Grid item xs={12} container spacing={1}>
+                                    {children}
+                                </Grid>
                             </Grid>
                         </Main>
                         <Drawer

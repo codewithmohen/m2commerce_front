@@ -28,19 +28,15 @@ export default function index() {
     const auth = useSelector((state: any) => state.auth) as IAuthState;
 
 
+
     return (
         <>
 
-            <Grid item xs={4} spacing={2}>
+            <Grid item xs={4}>
 
                 <Typography variant="h2">Auth</Typography>
                 <nav aria-label="secondary mailbox folders">
                     <List>
-                        <ListItem disablePadding>
-                            <ListItemButton component="a" href="/admin/auth/update">
-                                <ListItemText primary="Update" />
-                            </ListItemButton>
-                        </ListItem>
                         <ListItem disablePadding>
                             <ListItemButton component="a" href="/admin/auth/change-password">
                                 <ListItemText primary="Change Password" />
@@ -49,7 +45,7 @@ export default function index() {
                     </List>
                 </nav>
             </Grid>
-            <Grid item xs={8} spacing={2}>
+            <Grid item xs={8}>
                 <Paper>
                     <Box p={2}>
                         <FormGroup >

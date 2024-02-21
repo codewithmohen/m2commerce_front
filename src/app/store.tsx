@@ -1,6 +1,12 @@
 import { Middleware, combineReducers, configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
   persistReducer, persistStore
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -28,15 +34,22 @@ export const store = configureStore({
     },
     combinedReducers
   ),
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    // immutableCheck: false,
-    // serializableCheck: false,
-    // thunk: true
-  }
-  ).concat(logger).concat(thunk)
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+  // immutableCheck: false,
+  // serializableCheck: false,
+  // thunk: true
+  // }
+  // ).concat(logger).concat(thunk)
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootStateType = ReturnType<typeof store.getState>;
+// export type RootState = store.getState;
 export type AppDispatch = typeof store.dispatch;
 export const persistor = persistStore(store);
 

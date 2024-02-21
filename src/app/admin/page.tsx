@@ -19,7 +19,7 @@ export default function index() {
     return (
         loadPage &&
         <>
-            <Grid item xs={12} spacing={2}>
+            <Grid item xs={12} >
                 <DataGrid columns={columns} rows={rows} />
             </Grid>
         </>
