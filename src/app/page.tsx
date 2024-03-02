@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 import { useState } from 'react';
 import 'react-data-grid/lib/styles.css';
@@ -178,6 +179,18 @@ export default function index() {
             </Box>
         </>
     );
+=======
+"use client";
+
+import Shop from "./features/shop-mr/page";
+
+export default function Home() {
+  return (
+    <>
+      <Shop/>
+    </>
+  );
+>>>>>>> main
 }
 
 
