@@ -13,10 +13,13 @@ import Grid from '@mui/material/Grid';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useEffect, useState } from 'react';
+import Loading from '../../../_components/loading';
 
-const defaultTheme = createTheme();
 
 export default function index() {
+    const defaultTheme = createTheme();
+    const [loadPage, setLoadPage] = useState(true);
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -25,43 +28,53 @@ export default function index() {
             password: data.get('password'),
         });
     };
-
+    useEffect(() => {
+        setLoadPage(false);
+    }, []);
     return (
         <>
+            {loadPage && (<Loading />)}
+            <>
+                {!loadPage &&
 
-            <Avatar sx={{ m: 1, bgcolor: 'primary.light' }}>
-                <SentimentVeryDissatisfiedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-                Forget Password
-            </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="password"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    autoFocus
-                />
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                >
-                    Send Mail
-                </Button>
-                <Grid container>
-                    <Grid item xs>
-                        <Link href="./sign-in" variant="body2">
-                            Back
-                        </Link>
-                    </Grid>
-                </Grid>
-            </Box>
+                    (
+                        <>
+                            <Avatar sx={{ m: 1, bgcolor: 'primary.light' }}>
+                                <SentimentVeryDissatisfiedIcon />
+                            </Avatar>
+                            <Typography component="h1" variant="h5">
+                                Forget Password
+                            </Typography>
+                            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                                <TextField
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="password"
+                                    label="Email Address"
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocus
+                                />
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{ mt: 3, mb: 2 }}
+                                >
+                                    Send Mail
+                                </Button>
+                                <Grid container>
+                                    <Grid item xs>
+                                        <Link href="./sign-in" variant="body2">
+                                            Back
+                                        </Link>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                        </>
+                    )}
+            </>
         </>
     );
 }

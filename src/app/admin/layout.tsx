@@ -199,13 +199,13 @@ export default function Layout({
                             <List>
                                 <ListItemButton
                                     selected={selectedIndex === 1}
-                                    href='/admin/auth'
+                                    href='/admin/user'
                                 // onClick={(event) => handleListItemClick(event, 1)}
                                 >
                                     <ListItemIcon>
                                         <SupervisedUserCircleTwoToneIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Auth" />
+                                    <ListItemText primary="User Manager" />
                                 </ListItemButton>
                                 <ListItemButton
                                     selected={selectedIndex === 1}
@@ -214,7 +214,7 @@ export default function Layout({
                                     <ListItemIcon>
                                         <StorefrontTwoToneIcon />
                                     </ListItemIcon>
-                                    <ListItemText primary="Shop" />
+                                    <ListItemText primary="Shop Manager" />
                                 </ListItemButton>
                                 <ListItemButton
                                     selected={selectedIndex === 1}

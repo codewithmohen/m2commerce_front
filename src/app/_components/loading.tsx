@@ -5,15 +5,18 @@ export default function Loading() {
     return (
         <div
             style={{
-                // do your styles depending on your needs.
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
+                position: 'absolute',
+                height: '100px',
+                width: '100px',
+                top: '50%',
+                left: '50%',
+                marginLeft: '-50px',
+                marginTop: - '50px',
             }}
         >
             {
                 <CircularProgress />
             }
-        </div>
+        </div >
     );
 }

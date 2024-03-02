@@ -17,6 +17,7 @@ import { IAuthState } from '../../_reducer/interfaces';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { enqueueSnackbar, SnackbarProvider } from 'notistack';
+import Loading from '@/app/_components/loading';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -38,69 +39,78 @@ export default function index() {
     useEffect(() => {
         auth.data?.jwt && enqueueSnackbar('Welcome', { variant: 'success' });
     }, [auth.data?.jwt]);
+
+    useEffect(() => {
+        setLoadPage(false);
+    }, []);
     return (
-        loadPage && <>
-            <SnackbarProvider />
-            <Avatar sx={{ m: 1, bgcolor: 'primary.light' }}>
-                <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-                Sign in
-            </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    value={"codewithmohsen@gmail.com"}
-                    autoComplete="email"
-                    autoFocus
-                />
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="password"
-                // value="Bahar1391"
-                />
-                <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Remember me"
-                />
-                <Button
-                    color='primary'
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                >
-                    Sign In
-                </Button>
-                <Grid container>
-                    <Grid item xs>
-                        <Link href="./forget-password" color="inherit">
-                            Forgot password?
-                        </Link>
-                    </Grid>
-                </Grid>
-                <Grid container>
-                    <Grid item xs>
-                        {'Copyright © '}
-                        <Link color="inherit" href="https://github.com/codewithmohsen/m2commerce_front" >
-                            M2Commerce
-                        </Link> {' '}
-                        {new Date().getFullYear()}
-                        {'.'}
-                    </Grid>
-                </Grid>
-            </Box>
+        <>
+            {loadPage && (<Loading />)}
+            {
+                !loadPage && (
+                    <>
+                        <SnackbarProvider />
+                        <Avatar sx={{ m: 1, bgcolor: 'primary.light' }}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Sign in
+                        </Typography>
+                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                value={"codewithmohsen@gmail.com"}
+                                autoComplete="email"
+                                autoFocus
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="password"
+                            />
+                            <FormControlLabel
+                                control={<Checkbox value="remember" color="primary" />}
+                                label="Remember me"
+                            />
+                            <Button
+                                color='primary'
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                            >
+                                Sign In
+                            </Button>
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link href="./forget-password" color="inherit">
+                                        Forgot password?
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                            <Grid container>
+                                <Grid item xs>
+                                    {'Copyright © '}
+                                    <Link color="inherit" href="https://github.com/codewithmohsen/m2commerce_front" >
+                                        M2Commerce
+                                    </Link> {' '}
+                                    {new Date().getFullYear()}
+                                    {'.'}
+                                </Grid>
+                            </Grid>
+                        </Box>
+                    </>
+                )}
         </>
     );
-};;
+}
