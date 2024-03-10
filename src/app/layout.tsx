@@ -13,7 +13,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import useSecure from './_hooks/useSecure';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { SnackbarProvider, enqueueSnackbar } from 'notistack';
-import { IAuthState } from './(auth)/_reducer/interfaces';
 const queryClient = new QueryClient();
 export default function RootLayout({
   children,

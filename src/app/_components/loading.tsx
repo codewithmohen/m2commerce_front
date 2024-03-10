@@ -11,7 +11,7 @@ export default function Loading() {
                 top: '50%',
                 left: '50%',
                 marginLeft: '-50px',
-                marginTop: - '50px',
+                marginTop: '50px',
             }}
         >
             {

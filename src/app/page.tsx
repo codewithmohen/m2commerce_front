@@ -7,6 +7,7 @@ import Loading from './_components/loading';
 import { StyledTable, TableContainer } from "./tableStyle";
 import { createColumnHelper, useReactTable, getCoreRowModel, getExpandedRowModel, getFacetedMinMaxValues, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getGroupedRowModel, getPaginationRowModel, getSortedRowModel, flexRender, ColumnDef } from '@tanstack/react-table';
 import Button from '@mui/material/Button';
+import Image from 'next/image';
 import {
     Paper,
     Table as MuiTable,
@@ -84,6 +85,7 @@ export default function index() {
         DOB: string;
         status: string;
         activity: any;
+        photo: string;
     };
     const columnHelper = createColumnHelper<Student>();
     const columns: ColumnDef<any, any>[] = [
@@ -110,6 +112,22 @@ export default function index() {
                     />
                 );
             },
+        }),
+        columnHelper.accessor("photo", {
+            header: "Photo",
+            cell: (info: any) => {
+                return (
+                    <>
+                        <img className="resize" src="https://picsum.photos/50" />
+                        {/* <Image
+                            src="/profile.png"
+                            width={50}
+                            height={50}
+                            alt="Picture of the author"
+                        /> */}
+                    </>
+                );
+            }
         }),
         columnHelper.accessor("activity", {
             header: "activity",
